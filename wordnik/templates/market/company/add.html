@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block extrascripts %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/ckeditor/adapters/jquery.js"></script>
+    <script type="text/javascript">
+    	$(function() {
+			$( 'textarea' ).ckeditor();
+			//var editor = $('textarea').ckeditorGet();
+			//console.log(editor);
+		});
+    </script>
+{% endblock %}
+
+{% block sidebar %}
+
+
+
+{% endblock %}
+
+{% block pagetitle %}
+	{{s.name}}
+{% endblock %}
+
+{% block content %}
+<p class="pageSubHead">Add a New Company</p>
+<form action="/company/add/" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+	{% for field in form %}
+        <p class="fieldWrapper">
+            <span class="fieldLabel">{{ field.label_tag }}:</span>
+        </p>
+         <p class="fieldWrapper">
+            {{ field.errors }}
+			{{ field }}
+        </p>
+    {% endfor %}
+	<input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
