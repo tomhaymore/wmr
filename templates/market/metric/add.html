@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+
+
+
+{% endblock %}
+
+{% block pagetitle %}
+	{{s.name}}
+{% endblock %}
+
+{% block content %}
+<p class="pageSubHead">Add a New Metric</p>
+<form action="/metric/add/" method="post">
+{% csrf_token %}
+	{% for hidden in form.hidden_fields %}
+	{{ hidden }}
+	{% endfor %}
+	{% for field in form.visible_fields %}
+			<p class="fieldWrapper">
+				<span class="fieldLabel">{{ field.label_tag }}:</span>
+			</p>
+			<p class="fieldWrapper">
+				{{ field.errors }}
+				{{ field }}
+			</p>
+    {% endfor %}
+	<input type="submit" value="Submit" />
+</form>
+
+{% endblock %}

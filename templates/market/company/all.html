@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+
+
+{% endblock %}
+
+{% block pagetitle %}
+All Companies
+{% endblock %}
+
+{% block content %}
+{% if cos %}
+	<ul class="slickList">
+		{% for co in cos.object_list %}
+			<li><a href="/company/{{ co.id }}/">{{ co.name }}</a></li>
+		{% endfor %}
+	</ul>
+	
+<div class="pagination">
+    <span class="step-links">
+        {% if cos.has_previous %}
+            <a href="?page={{ cos.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ cos.number }} of {{ cos.paginator.num_pages }}
+        </span>
+
+        {% if cos.has_next %}
+            <a href="?page={{ cos.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% else %}
+	<p>No companies in the database.</p>
+{% endif %}
+
+
+{% endblock %}
+	
