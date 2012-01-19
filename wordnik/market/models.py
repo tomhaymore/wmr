@@ -42,7 +42,7 @@ REGION_CHOICES = (
 class Comment(models.Model):
 	user = models.ForeignKey(User)
 	body = models.TextField()
-	company = models.ForeignKey("Company",null=True)
+	company = models.ForeignKey("Company",blank=True,null=True)
 	category = models.CharField(max_length=20,choices=COMMENT_CHOICES)
 	created = models.DateTimeField(auto_now_add=True)
 	modified = models.DateTimeField(auto_now=True)
@@ -86,7 +86,7 @@ class Segment(models.Model):
 # need to add logo
 class Company(models.Model):
 	name = models.CharField(max_length=250)
-	parent = models.ForeignKey('self',blank=True, related_name="parent_comp")
+	parent = models.ForeignKey('self',blank=True,null=True,related_name="parent_comp")
 	description = models.TextField(blank=True)
 	slogan = models.TextField(blank=True)
 	logo = models.FileField(upload_to='logos',blank=True)
@@ -188,7 +188,7 @@ class Metric(models.Model):
 	round = models.CharField(max_length=15)
 	stat = models.CharField(max_length=25)
 	date = models.DateField()
-	source = models.ForeignKey(Source,null=True)
+	source = models.ForeignKey(Source,blank=True,null=True)
 	
 class BusinessModel(models.Model):
 	name = models.CharField(max_length=250)
