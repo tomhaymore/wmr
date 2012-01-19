@@ -101,7 +101,7 @@ class Company(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	modified = models.DateTimeField(auto_now=True)
 	public = models.BooleanField(default=False)
-	ticker = models.CharField(max_length=15,blank=True)
+	ticker = models.CharField(max_length=15,blank=True,null=True)
 	
 	class Meta:
 		verbose_name_plural = 'Companies'
@@ -148,14 +148,14 @@ class ProductFeature(models.Model):
 
 class Source(models.Model):
 	author = models.CharField(max_length=200,blank=True,null=True)
-	source = models.CharField(max_length=200,blank=True)
-	url = models.URLField(blank=True)
-	file = models.FileField(upload_to='sources',blank=True)
+	source = models.CharField(max_length=200,blank=True,null=True)
+	url = models.URLField(blank=True,null=True)
+	file = models.FileField(upload_to='sources',blank=True,null=True)
 	title = models.CharField(max_length=450)
 	date = models.DateField()
-	tags = models.ManyToManyField(Tag,blank=True)
+	tags = models.ManyToManyField(Tag,blank=True,null=True)
 	#comments = models.ManyToManyField(Comment,blank=True,null=True)
-	insight = models.TextField(blank=True)
+	insight = models.TextField(blank=True,null=True)
 	company = models.ManyToManyField(Company,blank=True, null=True)
 	modified = models.DateTimeField(auto_now=True)
 	
@@ -185,7 +185,7 @@ class Metric(models.Model):
 	product = models.ForeignKey(Product,blank=True,null=True)
 	region = models.CharField(max_length=15,choices=REGION_CHOICES,blank=True)
 	company = models.ForeignKey(Company)
-	round = models.CharField(max_length=15)
+	round = models.CharField(max_length=15,blank=True,null=True)
 	stat = models.CharField(max_length=25)
 	date = models.DateField()
 	source = models.ForeignKey(Source,blank=True,null=True)

@@ -1,7 +1,12 @@
-from django.db import connection, transaction
 import os
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'wordnik.settings'
+
+print os.environ['DJANGO_SETTINGS_MODULE']
+
+
+from django.db import connection, transaction
+
 
 cursor = connection.cursor()
 
