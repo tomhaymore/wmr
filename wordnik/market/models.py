@@ -75,7 +75,7 @@ class Tag(models.Model):
 # different market segments
 class Segment(models.Model):
 	name = models.CharField(max_length=250)
-	description = models.TextField(blank=True)
+	description = models.TextField(blank=True,null=True)
 	created = models.DateTimeField(auto_now_add=True)
 	modified = models.DateTimeField(auto_now=True)
 	
@@ -87,7 +87,7 @@ class Segment(models.Model):
 class Company(models.Model):
 	name = models.CharField(max_length=250)
 	parent = models.ForeignKey('self',blank=True,null=True,related_name="parent_comp")
-	description = models.TextField(blank=True)
+	description = models.TextField(blank=True, null=True)
 	slogan = models.TextField(blank=True)
 	logo = models.FileField(upload_to='logos',blank=True)
 	url = models.URLField(max_length=250,blank=True)
@@ -112,7 +112,7 @@ class Company(models.Model):
 # specific company products	
 class Product(models.Model):
 	name = models.CharField(max_length=450)
-	description = models.TextField()
+	description = models.TextField(blank=True,null=True)
 	value_prop = models.CharField(max_length=450)
 	state = models.CharField(max_length=15,choices=STATE_CHOICES)
 	features = models.ManyToManyField("Feature",through="ProductFeature")
@@ -167,7 +167,7 @@ class Source(models.Model):
 	
 class Ecosystem(models.Model):
 	name = models.CharField(max_length=200)
-	description = models.TextField(blank=True)
+	description = models.TextField(blank=True,null=True)
 	modified = models.DateTimeField(auto_now=True)
 
 	def __unicode__(self):
@@ -192,7 +192,7 @@ class Metric(models.Model):
 	
 class BusinessModel(models.Model):
 	name = models.CharField(max_length=250)
-	description = models.TextField()
+	description = models.TextField(blank=True,null=True)
 	comments = models.ManyToManyField(Comment,blank=True,null=True)
 	companies = models.ManyToManyField(Company,blank=True,null=True,through="BusinessModelDetails") 
 	
