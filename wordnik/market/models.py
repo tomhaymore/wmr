@@ -65,7 +65,7 @@ class Exit(models.Model):
 # tags, used on pretty much all types of entities
 class Tag(models.Model):
 	name = models.CharField(max_length=200)
-	description = models.TextField()
+	description = models.TextField(null=True)
 	created = models.DateTimeField(auto_now_add=True)
 	modified = models.DateTimeField(auto_now=True)
 	
