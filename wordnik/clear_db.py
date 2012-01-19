@@ -1,4 +1,7 @@
 from django.db import connection, transaction
+import os
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'wordnik.settings'
 
 cursor = connection.cursor()
 
