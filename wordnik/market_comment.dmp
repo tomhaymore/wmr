@@ -1,0 +1,20 @@
+id,user_id,body,company_id,category,created,modified
+1,1,"<p>
+	Lithium has an interesting business model where they charge based on the activity of customers on the platforms that Lithium provides to its customers. &nbsp;Clever idea, and it means that their revenue automaticaly scales with growth in product. &nbsp;Also probably means an easy early sell because price would be quite low.</p>
+",122,co,"2012-01-05 15:52:40.077545","2012-01-05 15:52:40.077577"
+2,1,"<p>
+	I&#39;m not sure why Nimble thinks that it&#39;s the first and only company to realize that social is the future of marketing, but they have a genius idea for creating a platform for customers to do the marketing for the companies. &nbsp;They provide an opportunity for customers to think of themselves as mavens (think Gladwell) and then they can take on some of the burden of customer outreach.</p>
+",213,co,"2012-01-05 16:16:10.261306","2012-01-05 16:16:10.261337"
+3,1,"<p>
+	BuzzFeed is a pretty interesting company. &nbsp;On the one hand it&#39;s like the Huffington Post, a mix of aggregation (without much attribution) and content, but one that is not necessarily very interesting to us right away. &nbsp;However, on the other hand BuzzFeed is more about measuring and inducing virality -- the content is part of it, for sure, but not the most interesting part.</p>
+",223,co,"2012-01-09 15:48:36.099506","2012-01-09 15:48:36.099537"
+4,1,"<p>
+	&quot;<strong style=""padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(25, 25, 25); font-family: Verdana, Helvetica, Arial, sans-serif; line-height: 16px; "">Of these three factors, the uniqueness of content remains the most potent one</strong><span style=""color: rgb(25, 25, 25); font-family: Verdana, Helvetica, Arial, sans-serif; line-height: 16px; "">. With the inflation of aggregators and of social reading habits, the natural replication of information has turned into an overwhelming flood. Then, the production of specific content&mdash;and its protection&mdash;becomes a key element in building value. As for price structures, there is no magic formula. Usually, the simpler the better (as Apple demonstrated)&mdash;especially for businesses that start from scratch. But, with pre-existing and different audience segments such as an individual and corporate users, pricing decisions become more complicated and a diversified price list can prevent cannibalization. As for the Apple v independent app issue, my personal take is that sleeping with Apple is a quick short-term win, an easier strategy. But, in the long run, the independent way (which, after all, is an article of faith for Apple itself) will yield better results.&quot;</span></p>
+<p>
+	From &quot;How the FT and NYT Aim To May Paywalls Pay&quot;</p>
+<p>
+	Very interesting take on the power and importance of traditional media outlets, and on the tradeoffs in getting in bed with Apple.</p>
+",215,co,"2012-01-10 10:59:18.307593","2012-01-10 10:59:18.307631"
+5,1,"<p>
+	<span style=""color: rgb(0, 0, 0); font-family: Georgia, 'Times New Roman', Times, serif; font-size: 15px; line-height: 24px; "">&quot;Quixey is trying to stand out by offering what it calls a functional search engine, which takes in more than just a title and description of an app but pulls in information from blogs, forums, review sites and social networks to better understand what an app actually does.&quot;</span></p>
+",207,co,"2012-01-13 13:47:16.514892","2012-01-13 13:47:16.514926"

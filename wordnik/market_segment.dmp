@@ -1,0 +1,40 @@
+id,name,created,modified,description
+1,"News Aggregation","2011-12-22 14:01:10.111962","2011-12-22 14:01:10.112017",
+2,"Social Cataloging","2011-12-22 14:01:10.338564","2011-12-22 14:01:10.338594",
+3,"Social / Intelligent Recommendations","2011-12-22 14:01:10.435239","2011-12-22 14:01:10.435291",
+5,"Blogging / Journaling","2011-12-22 14:01:10.592809","2011-12-22 14:01:10.592840",
+6,"Social Shopping","2011-12-22 14:01:10.723456","2011-12-22 14:01:10.723488",
+7,"Social Bookmarking / Discovery","2011-12-22 14:01:10.892777","2011-12-22 14:01:10.892807",
+8,"Social Media Marketing & CRM","2011-12-22 14:01:11.093645","2011-12-22 14:01:11.093678",
+10,"Content Provision / Recommendation","2011-12-22 14:01:11.284789","2011-12-22 14:01:11.284819",
+11,"Content Personalization / Optimization","2011-12-22 14:01:11.312444","2011-12-22 14:01:11.312480",
+12,"Semantic Search","2011-12-22 14:01:11.467648","2011-12-22 14:01:11.467678",
+13,"Content Discovery","2011-12-22 14:01:11.575211","2011-12-22 14:01:11.575243",
+14,"Content Guides / Summaries","2011-12-22 14:01:11.659035","2011-12-22 14:01:11.659066",
+15,"Real-time / Intelligent Search","2011-12-22 14:01:11.756137","2011-12-22 14:01:11.756171",
+16,"Ad Optimization","2011-12-22 14:01:12.113487","2011-12-22 14:01:12.113521",
+17,Commenting,"2011-12-22 14:01:12.312208","2011-12-22 14:01:12.312239",
+18,"Ad Network","2011-12-22 14:01:12.340551","2012-01-18 13:50:49.265541",
+19,"Content Transformation","2011-12-22 14:01:12.422433","2011-12-22 14:01:12.422487",
+20,"Content Recommendation","2011-12-22 14:01:12.450346","2011-12-22 14:01:12.450377",
+21,"Bookmarking Analytics","2011-12-22 14:01:12.783368","2011-12-22 14:01:12.783400",
+23,"Personal Curation","2011-12-22 14:01:12.921423","2011-12-22 14:01:12.921453",
+24,"Social Media Analysis & Monitoring","2011-12-22 14:01:12.945803","2011-12-22 14:01:12.945834",
+25,"Personalized Newspapers","2011-12-22 14:01:13.062270","2011-12-22 14:01:13.062301",
+26,"Social Ad Optimization","2011-12-22 14:01:13.463979","2011-12-22 14:01:13.464013",
+27,"Content Analysis","2011-12-22 14:01:13.490683","2011-12-22 14:01:13.490718",
+31,"Personalized Magazines","2011-12-22 14:01:16.373299","2011-12-22 14:01:16.373331",
+32,"App Recommendation","2011-12-22 14:01:16.398213","2011-12-22 14:01:16.398244",
+33,"App Search","2011-12-22 14:01:16.648329","2011-12-22 14:01:16.648359",
+34,"Social Networking","2012-01-06 12:58:10.428047","2012-01-06 12:58:10.428098",
+35,"Traditional Publishing","2012-01-06 16:10:34.751649","2012-01-07 22:20:49.352029","<p>
+	Consists primarily of traditional media publishers, primarily newspapers and magazines, who have established online presences as a way to complement their print businesses. &nbsp;Often characterized as a &quot;dying industry,&quot; traditional publishers have struggled to keep their traditional products from slowly withering while at the same time adapting to the new online format. &nbsp;Some have offered all their content online for free, while others have restricted their content behind a paywall. &nbsp;Neither strategy has proven to a winning one, however.</p>
+<div>
+	<p>
+		The segment has also recently been disrupted by somewhat new players like the Huffington Post and the Business Insider. &nbsp;Somewhere between tabloids and traditional newspapers, these companies have been accused of over-zealous aggregation of stories from other sources with insufficient attribution. &nbsp;However, perhaps due to a higher emphasis on lifestyle and celebrity stories, they are growing at much higher rate than more tradititional players.</p>
+	<p>
+		Established players include the New York Times, Wall Street Journal, Business Week, Washington Post and a few others.</p>
+</div>
+"
+36,"Media Sharing","2012-01-16 15:46:58.180296","2012-01-16 15:46:58.180340",""
+37,"Blog Network","2012-01-18 13:40:11.081441","2012-01-18 13:40:11.081477",""

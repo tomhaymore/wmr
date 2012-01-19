@@ -1,0 +1,33 @@
+id,name
+1,Valuation
+2,"Run rate"
+3,"Sales / month"
+4,"Sales / week"
+5,"Sales / day"
+6,"Orders / month"
+7,"Orders / day"
+8,"Posts / Day"
+9,Posts
+10,"API calls / month"
+11,"Shares / URLs / etc per day"
+12,"New users / day"
+13,"Premium User Conversion Rate"
+14,"Premium Users"
+15,"Users / Sites "
+16,Downloads
+17,"Visitors / month"
+18,"Uniques / Month"
+19,"Uniques / day"
+20,"Pageviews / month"
+21,"% Active Users"
+22,"Active Users"
+23,"Average Mins / Stay"
+24,"Pageviews / User"
+25,"Reviews / Rating"
+26,"Blogs / Boards / etc"
+27,"Readers / Reach"
+28,"Affluent Readers"
+29,Circulation
+30,"Time per person"
+31,"Online Ad Revenue"
+32,Financing
