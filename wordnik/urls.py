@@ -30,7 +30,7 @@ urlpatterns = patterns('',
     url(r'^report/(?P<report_id>\d+)/$', 'market.views.reportDetail'),
     url(r'^report/all', 'market.views.reportAll'),
     url(r'^login','market.views.login'),
-    url(r'^admin','market.views.admin'),
+    #url(r'^admin','market.views.admin'),
     url(r'^admin/user/add','market.views.userAdd'),
     # url(r'^wordnik/', include('wordnik.foo.urls')),
 
