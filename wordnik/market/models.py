@@ -59,7 +59,7 @@ class Exit(models.Model):
 	amount = models.DecimalField(max_digits=24, decimal_places=2,blank=True,null=True)
 	company = models.ForeignKey("Company",blank=True,null=True,related_name="company")
 	acquirer = models.ForeignKey("Company",blank=True,null=True,related_name="acquirer")
-	date = models.DateField()
+	date = models.DateField(blank=True,null=True)
 	modified = models.DateTimeField(auto_now=True)
 
 # tags, used on pretty much all types of entities
@@ -91,17 +91,17 @@ class Company(models.Model):
 	slogan = models.TextField(blank=True)
 	logo = models.FileField(upload_to='logos',blank=True)
 	url = models.URLField(max_length=250,blank=True)
-	platform = models.CharField(max_length=15,default="web",blank=True)
+	platform = models.CharField(max_length=45,default="web",blank=True)
 	ecosystem = models.ManyToManyField("Ecosystem",blank=True,null=True)
 	segments = models.ManyToManyField(Segment,blank=True)
 	#comments = models.ManyToManyField(Comment,blank=True,null=True)
 	tags = models.ManyToManyField(Tag,blank=True)
 	#exit = models.ForeignKey(Exit,blank=True,null=True)
-	state = models.CharField(max_length=15,default="active",choices=STATE_CHOICES)
+	state = models.CharField(max_length=45,default="active",choices=STATE_CHOICES)
 	created = models.DateTimeField(auto_now_add=True)
 	modified = models.DateTimeField(auto_now=True)
 	public = models.BooleanField(default=False)
-	ticker = models.CharField(max_length=15,blank=True,null=True)
+	ticker = models.CharField(max_length=45,blank=True,null=True)
 	
 	class Meta:
 		verbose_name_plural = 'Companies'
@@ -114,7 +114,7 @@ class Product(models.Model):
 	name = models.CharField(max_length=450)
 	description = models.TextField(blank=True,null=True)
 	value_prop = models.CharField(max_length=450)
-	state = models.CharField(max_length=15,choices=STATE_CHOICES)
+	state = models.CharField(max_length=45,choices=STATE_CHOICES)
 	features = models.ManyToManyField("Feature",through="ProductFeature")
 	#comments = models.ManyToManyField(Comment,blank=True,null=True)
 	tags = models.ManyToManyField(Tag)
@@ -183,11 +183,11 @@ class Metric(models.Model):
 	category = models.ForeignKey(MetricType)
 	platform = models.CharField(max_length=25,blank=True)
 	product = models.ForeignKey(Product,blank=True,null=True)
-	region = models.CharField(max_length=15,choices=REGION_CHOICES,blank=True)
+	region = models.CharField(max_length=45,choices=REGION_CHOICES,blank=True)
 	company = models.ForeignKey(Company)
-	round = models.CharField(max_length=15,blank=True,null=True)
+	round = models.CharField(max_length=45,blank=True,null=True)
 	stat = models.CharField(max_length=25)
-	date = models.DateField()
+	date = models.DateField(blank=True,null=True)
 	source = models.ForeignKey(Source,blank=True,null=True)
 	
 class BusinessModel(models.Model):
