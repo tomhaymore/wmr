@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     url(r'^tag/all', 'market.views.tagAll'),
     url(r'^report/(?P<report_id>\d+)/$', 'market.views.reportDetail'),
     url(r'^report/all', 'market.views.reportAll'),
+    url(r'^report/add', 'market.views.add'),
     url(r'^login','market.views.login'),
     # url(r'^wordnik/', include('wordnik.foo.urls')),
 
