@@ -84,7 +84,7 @@ div#sidebar {
 }
 
 div#mainContent {
-	width:65%;
+	width:75%;
 	margin-right: 20px;
 }
 
@@ -102,8 +102,9 @@ div#coName {
 
 div.tileDiv {
 	float:left;
-	width:350px;
+	width:300px;
 	margin-right:10px;
+	font-size:12px;
 }
 
 /* Form Styles */

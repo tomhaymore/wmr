@@ -9,9 +9,9 @@
 
 <div class="tileDiv">
 	<p class="pageSubHead">Updated Market Segments</p>
-	{% if latest_segments_list %}
+	{% if segment_list %}
 		<ul class="slickList">
-			{% for s in latest_segments_list %}
+			{% for s in segment_list %}
 				<li><a href="/segment/{{ s.id }}/">{{ s.name }}</a></li>
 			{% endfor %}
 		</ul>
@@ -53,21 +53,6 @@
 		<p><a href="/source/all"><em>See all sources</em></a></p>
 	{% else %}
 		<p>No sources in the database.</p>
-	{% endif %}
-</div>
-
-<div class="tileDiv">
-	<p class="pageSubHead">Recent Comments</p>
-	{% if comments %}
-		{% for com in comments %}
-			<div class="commentWrapper">
-				
-				<p> {{ com.body|safe }} </p>
-				<p> by {{ com.user }} </p>
-			</div>
-		{% endfor %}
-	{% else %}
-		<p>No comments in the database.</p>
 	{% endif %}
 </div>
 
