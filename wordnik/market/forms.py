@@ -119,9 +119,9 @@ class CompanyCommentForm(forms.Form):
 	body = forms.CharField(widget=forms.Textarea)
 
 class ReportStreamAddForm(forms.Form):
-	name = models.CharField()
-	description = models.CharField(widget=forms.Textarea)
-	tags = models.CharField()
+	name = forms.CharField()
+	description = forms.CharField(widget=forms.Textarea)
+	tags = forms.CharField()
 	companies = forms.ModelMultipleChoiceField(queryset=COMPANIES,required=False)
 	segments = forms.ModelMultipleChoiceField(queryset=SEGMENTS,required=False)
 	
