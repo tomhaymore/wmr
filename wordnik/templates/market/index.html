@@ -40,7 +40,7 @@
 	{% if recent_news %}
 		<ul class="slickList">
 			{% for s in recent_news %}
-				<li><a href="/source/{{ s.id }}/">{{ s.title }}</a>,
+				<li><a href="/source/{{ s.id }}/">{{ s.title }}</a><br / >
 				{% if s.author %} 
 					by {{s.author}}
 				{% endif %}

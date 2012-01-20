@@ -179,7 +179,7 @@ def allCompanies(request):
 
 @login_required
 def index(request):
-	segment_list = Segment.objects.all().order_by('name')
+	segment_list = Segment.objects.all().order_by('-modified')[:5]
 	comments = Comment.objects.all().order_by('-modified')[:5]
 	latest_companies_list = Company.objects.all().order_by('-modified')[:5]
 	latest_comments_list = Comment.objects.all().order_by('-modified')[:5]
