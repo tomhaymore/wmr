@@ -40,7 +40,7 @@ def login(request):
     return render_to_response('market/login.html', {'errors':msg},context_instance=RequestContext(request))
 
 @login_required
-def logout(request):
+def logout_view(request):
     logout(request)
     return HttpResponseRedirect("/")
 
