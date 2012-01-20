@@ -86,6 +86,7 @@ def addCompany(request):
 		context_instance=RequestContext(request)
 	)
 
+@login_required
 def editCompany(request,co_id):
 	co = Company.objects.get(pk=co_id)
 	if request.method == 'POST': # if the form has been submitted
@@ -159,6 +160,7 @@ def editCompany(request,co_id):
 		context_instance=RequestContext(request)
 	)
 
+@login_required
 def allCompanies(request):
 	co_list = Company.objects.all()
 	paginator = Paginator(co_list, 20)
@@ -183,7 +185,8 @@ def index(request):
 	latest_comments_list = Comment.objects.all().order_by('-modified')[:5]
 	recent_news = Source.objects.all().order_by('-modified')[:5]
 	return render_to_response('market/index.html',{'comments':comments,'recent_news':recent_news,'segment_list':segment_list,'latest_comments_list':latest_comments_list,'latest_companies_list':latest_companies_list},context_instance=RequestContext(request))
-	
+
+@login_required
 def companyDetail(request, co_id):
 	segment_list = Segment.objects.all().order_by('name')
 	c = get_object_or_404(Company, pk=co_id)
@@ -258,8 +261,7 @@ def companyDetail(request, co_id):
 	#else:
 	#	return render_to_response('market/company/detail.html',{'metrics':metrics,'comments':comments,'form':form,'recent_news':recent_news,'sources':sources,'segment_list':segment_list,'co':c},context_instance=RequestContext(request))
 	
-
-
+@login_required
 def search(request):
 	
 	if request.GET:
@@ -271,12 +273,14 @@ def search(request):
 		return render_to_response('market/search.html',{'recent_news':recent_news,'source_results':source_results,'company_results':company_results,'segment_list':segment_list},context_instance=RequestContext(request))
 	return HttpResponseRedirect("/")
 
+@login_required
 def sourceDetail(request, source_id):
 	s = get_object_or_404(Source, pk=source_id)
 	segment_list = Segment.objects.all().order_by('name')
 	recent_news = Source.objects.all().order_by('-modified')[:5]
 	return render_to_response('market/source/detail.html',{'recent_news':recent_news,'segment_list':segment_list,'s':s},context_instance=RequestContext(request))
 
+@login_required
 def sourceAdmin(request):
 	source_list = Source.objects.all()
 	paginator = Paginator(source_list, 25)
@@ -293,6 +297,7 @@ def sourceAdmin(request):
 	recent_news = Source.objects.all().order_by('-modified')[:5]
 	return render_to_response('market/source/admin.html',{'recent_news':recent_news,'segment_list':segment_list,'sources':sources},context_instance=RequestContext(request))
 
+@login_required
 def allSources(request):
 	source_list = Source.objects.all()
 	paginator = Paginator(source_list, 25)
@@ -309,6 +314,7 @@ def allSources(request):
 	recent_news = Source.objects.all().order_by('-modified')[:5]
 	return render_to_response('market/source/all.html',{'recent_news':recent_news,'segment_list':segment_list,'sources':sources},context_instance=RequestContext(request))
 
+@login_required
 def addSource(request):
 	if request.method == 'POST': # if the form has been submitted
 		form = SourceForm(request.POST,request.FILES) # a form is bound to the Post data
@@ -353,6 +359,7 @@ def addSource(request):
 
 #def sourceDelete(request, source_id):
 
+@login_required
 def addMetric(request):
 	if request.method == 'POST': # if the form has been submitted
 		form = MetricForm(request.POST) # a form is bound to the Post data
@@ -378,6 +385,7 @@ def addMetric(request):
 		context_instance=RequestContext(request)
 	)
 
+@login_required
 def segmentDetail(request, seg_id):
 	# get segment details
 	s = get_object_or_404(Segment, pk=seg_id)
@@ -387,6 +395,7 @@ def segmentDetail(request, seg_id):
 	recent_news = Source.objects.all().order_by('-modified')[:5]
 	return render_to_response('market/segment/detail.html',{'recent_news':recent_news,'segment_list':segment_list,'s':s},context_instance=RequestContext(request))
 
+@login_required
 def editSegment(request, seg_id):
 	# get segment details
 	s = get_object_or_404(Segment, pk=seg_id)
@@ -417,8 +426,8 @@ def editSegment(request, seg_id):
 	segment_list = Segment.objects.all().order_by('name')
 	recent_news = Source.objects.all().order_by('-modified')[:5]
 	return render_to_response('market/segment/edit.html',{'form':form,'recent_news':recent_news,'segment_list':segment_list,'s':s},context_instance=RequestContext(request))
-	
-	
+
+@login_required
 def allSegments(request):
 	segments = Segment.objects.all().order_by('name')
 	recent_news = Source.objects.all().order_by('-modified')[:5]
@@ -427,7 +436,8 @@ def allSegments(request):
 		},
 		context_instance=RequestContext(request)
 	)
-	
+
+@login_required
 def addSegment(request):
 	if request.POST:
 		# bind form to post data
@@ -451,6 +461,7 @@ def addSegment(request):
 
 # views for tags
 
+@login_required
 def tagDetail(request, tag_id):
 	# fetch tag or error
 	tag = get_object_or_404(Tag,pk=tag_id)
@@ -466,7 +477,8 @@ def tagDetail(request, tag_id):
 		},
 		context_instance=RequestContext(request)
 	)
-	
+
+@login_required
 def tagAll(request):
 	# get all tags
 	tag_list = Tag.objects.all()
@@ -490,6 +502,7 @@ def tagAll(request):
  
 # report views
 
+@login_required
 def reportDetail(request, report_id):
 	# get report or 404
 	report = get_object_or_404(Report, pk=report_id)
@@ -499,7 +512,8 @@ def reportDetail(request, report_id):
 		},
 		context_instance=RequestContext(request)
 	)
-	
+
+@login_required
 def reportAll(request):
 	# get all tags
 	rep_list = Report.objects.all()
@@ -520,7 +534,8 @@ def reportAll(request):
 		},
 		context_instance=RequestContext(request)
 	)
-	
+
+@login_required
 def reportAdd(request):
 	# check to see if form submitted
 	if request.POST:
@@ -548,6 +563,7 @@ def reportAdd(request):
 		context_instance=RequestContext(request)
 	)
 
+@login_required
 def reportStreamAdd(request):
 	# check to see if form submitted
 	if request.POST:
@@ -578,12 +594,13 @@ def reportStreamAdd(request):
 	else:
 		form = ReportStreamAddForm() # load unbound form
 	
-	return render_to_response('market/reportstream/add.html', {
+	return render_to_response('market/report/addStream.html', {
 		'form':form
 		},
 		context_instance=RequestContext(request)
 	)
-	
+
+@login_required
 def reportStreamDetail(request, stream_id):
 	# get stream or 404
 	
