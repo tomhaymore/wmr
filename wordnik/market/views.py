@@ -521,4 +521,8 @@ def reportAll(request):
 		context_instance=RequestContext(request)
 	)
 	
+# admin functions	
 	
+
+# user functions
+
