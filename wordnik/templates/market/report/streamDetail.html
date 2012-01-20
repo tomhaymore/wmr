@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block extrascripts %}
+
+    
+{% endblock %}
+
+{% block sidebar %}
+	
+
+{% endblock %}
+
+{% block pagetitle %}
+	<div class="pageTitleBarDiv" id="coName">{{stream.name}}</div>
+	
+{% endblock %}
+
+{% block content %}
+	
+	{% if stream.segments %}
+		<p class="pageSubHead">Market Segments</p>
+		<ul class="slickList">
+			{% for s in stream.segments.all %}
+				<li class="slickListItem"><a href="/segment/{{ s.id }}">{{s.name}}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	{% if stream.tags %}
+		<p class="pageSubHead">Tags</p>
+		<ul class="slickList">
+			{% for t in stream.tags.all %}
+				<li class="slickListItem"><a href="/tag/{{ t.id }}">{{t.name}}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	{% if stream.companies %}
+		<p class="pageSubHead">Related Companies</p>
+		<ul class="slickList">
+			{% for c in stream.companies.all %}
+				<li class="slickListItem"><a href="/company/{{ c.id }}">{{c.name}}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	{% if stream.report_set %}
+		<p class="pageSubHead">Reports</p>
+		<ul class="slickList">
+			{% for c in stream.report_set.all %}
+				<li class="slickListItem"><a href="{{ r.file }}">{{r.title}}</a>, {{ r.author.name }}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	
+	
+
+{% endblock %}
