@@ -7,30 +7,68 @@
 
 {% block content %}
 
-<p class="pageSubHead">Recently Added Companies</p>
-{% if latest_companies_list %}
-	<ul class="slickList">
-		{% for co in latest_companies_list %}
-			<li><a href="/company/{{ co.id }}/">{{ co.name }}</a></li>
+<div class="tileDiv">
+	<p class="pageSubHead">Updated Market Segments</p>
+	{% if latest_segments_list %}
+		<ul class="slickList">
+			{% for s in latest_segments_list %}
+				<li><a href="/segment/{{ s.id }}/">{{ s.name }}</a></li>
+			{% endfor %}
+		</ul>
+		<p><a href="/segment/all"><em>See all segments</em></a></p>
+	{% else %}
+		<p>No market segments in the database.</p>
+	{% endif %}
+</div>
+
+<div class="tileDiv">
+	<p class="pageSubHead">Recently Added Companies</p>
+	{% if latest_companies_list %}
+		<ul class="slickList">
+			{% for co in latest_companies_list %}
+				<li><a href="/company/{{ co.id }}/">{{ co.name }}</a></li>
+			{% endfor %}
+		</ul>
+		<p><a href="/company/all"><em>See all companies</em></a></p>
+	{% else %}
+		<p>No companies in the database.</p>
+	{% endif %}
+</div>
+
+<div class="tileDiv">
+	<p class="pageSubHead">Recent News</p>
+	{% if recent_news %}
+		<ul class="slickList">
+			{% for s in recent_news %}
+				<li><a href="/source/{{ s.id }}/">{{ s.title }}</a>,
+				{% if s.author %} 
+					by {{s.author}}
+				{% endif %}
+				{% if s.source %}
+					from {{s.source}}
+				{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+		<p><a href="/source/all"><em>See all sources</em></a></p>
+	{% else %}
+		<p>No sources in the database.</p>
+	{% endif %}
+</div>
+
+<div class="tileDiv">
+	<p class="pageSubHead">Recent Comments</p>
+	{% if comments %}
+		{% for com in comments %}
+			<div class="commentWrapper">
+				
+				<p> {{ com.body|safe }} </p>
+				<p> by {{ com.user }} </p>
+			</div>
 		{% endfor %}
-	</ul>
-	<p><a href="/company/all"><em>See all companies</em></a></p>
-{% else %}
-	<p>No companies in the database.</p>
-{% endif %}
-
-<p class="pageSubHead">Recent Comments</p>
-{% if comments %}
-	{% for com in comments %}
-		<div class="commentWrapper">
-			
-			<p> {{ com.body|safe }} </p>
-			<p> by {{ com.user }} </p>
-		</div>
-	{% endfor %}
-{% else %}
-	<p>No comments in the database.</p>
-{% endif %}
-
+	{% else %}
+		<p>No comments in the database.</p>
+	{% endif %}
+</div>
 {% endblock %}
 	
