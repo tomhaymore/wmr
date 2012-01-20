@@ -456,9 +456,9 @@ def tagDetail(request, tag_id):
 	tag = get_object_or_404(Tag,pk=tag_id)
 	
 	# get other entities associated with tag
-	cos = Company.objects.all().filter(tag=tag)
-	sources = Source.objects.all().filter(tag=tag)
-	reports = Report.objects.all().filter(tag=tag)
+	cos = Company.objects.filter(tags=tag)
+	sources = Source.objects.filter(tags=tag)
+	reports = Report.objects.filter(tags=tag)
 	
 	# render page
 	return render_to_response('market/tag/detail.html', {
@@ -469,7 +469,7 @@ def tagDetail(request, tag_id):
 	
 def tagAll(request):
 	# get all tags
-	tag_list = Tag.object.all()
+	tag_list = Tag.objects.all()
 
 	paginator = Paginator(tag_list, 25)
 	page = request.GET.get('page')
