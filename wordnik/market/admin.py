@@ -1,4 +1,4 @@
-from market.models import Comment, Exit, Tag, Segment, Company, Product, Feature, ProductFeature, Source, Ecosystem, MetricType, Metric
+from market.models import Comment, Exit, Tag, Segment, Company, Product, Feature, ProductFeature, Source, Ecosystem, Metric
 from django.contrib import admin
 
 class CommentAdmin(admin.ModelAdmin):
