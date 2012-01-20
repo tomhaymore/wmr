@@ -81,6 +81,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     '/Users/thaymore/Sites/wordnik/market/static',
+    '/Users/zeke/Projects/wordnik/wmr/wordnik/market/static'
 )
 
 # List of finder classes that know how to find static files in
@@ -117,6 +118,8 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     '/Users/thaymore/Sites/wordnik/wordnik/templates',
     '/app/wordnik/templates',
+    '/Users/zeke/Projects/wordnik/wmr/wordnik/templates',
+    #'/app/wordnik/templates',
 )
 
 INSTALLED_APPS = (
