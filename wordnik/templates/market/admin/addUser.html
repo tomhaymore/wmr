@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if errors %}
+	<p>{{ errors }} </p>
+{% endif %}
+<form action="/admin/user/add/" method="POST">
+{% csrf_token %}
+<p class="fieldWrapper">
+	<span class="fieldLabel">Username:</span>
+</p>
+<p class="fieldWrapper">
+	<input type="text" name="username" />
+</p>
+<p class="fieldWrapper">
+	<span class="fieldLabel">Email:</span>
+</p>
+<p class="fieldWrapper">
+	<input type="text" name="email" />
+</p>
+<p class="fieldWrapper">
+	<span class="fieldLabel">Password:</span>
+</p>
+<p class="fieldWrapper">
+	<input type="password" name="password" />
+</p>
+<input type="submit" value="Submit" />
+</form>
+
+{% endblock %}
