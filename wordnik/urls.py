@@ -33,6 +33,7 @@ urlpatterns = patterns('',
     url(r'^reportstream/add', 'market.views.reportStreamAdd'),
     url(r'^reportstream/(?P<stream_id>\d+)/$', 'market.views.reportStreamDetail'),
     url(r'^login','market.views.login'),
+    url(r'^logout','market.views.logout'),
     # url(r'^wordnik/', include('wordnik.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
