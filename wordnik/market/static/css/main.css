@@ -100,6 +100,12 @@ div#coName {
 	padding-top:0px;
 }
 
+div.tileDiv {
+	float:left;
+	width:350px;
+	margin-right:10px;
+}
+
 /* Form Styles */
 
 
