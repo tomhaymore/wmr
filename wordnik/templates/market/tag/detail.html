@@ -19,7 +19,7 @@
 		<p class="pageSubHead">Companies</p>
 		<ul class="slickList">
 			{% for c in cos %}
-				<li class="slickListItem"><a href="/company/{{ c.id }}">c.name</a></li>
+				<li class="slickListItem"><a href="/company/{{ c.id }}">{{c.name}}</a></li>
 			{% endfor %}
 		</ul>
 	{% endif %}
@@ -28,7 +28,7 @@
 		<p class="pageSubHead">Sources</p>
 		<ul class="slickList">
 			{% for s in sources %}
-				<li class="slickListItem"><a href="/source/{{ s.id }}">s.title</a></li>
+				<li class="slickListItem"><a href="/source/{{ s.id }}">{{s.title}}</a></li>
 			{% endfor %}
 		</ul>
 	{% endif %}
@@ -37,7 +37,7 @@
 		<p class="pageSubHead">Reports</p>
 		<ul class="slickList">
 			{% for r in reports %}
-				<li class="slickListItem"><a href="/report/{{ r.id }}">r.title</a></li>
+				<li class="slickListItem"><a href="/report/{{ r.id }}">{{r.title}}</a></li>
 			{% endfor %}
 		</ul>
 	{% endif %}
