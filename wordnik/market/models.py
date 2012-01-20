@@ -218,5 +218,7 @@ class Report(models.Model):
 	description = models.TextField()
 	file = models.FileField(upload_to='reports',blank=True)
 	stream = models.ForeignKey(ReportStream)
+	version = models.CharField(max_length=15)
+	author = models.ForeignKey(User)
 	created = models.DateTimeField(auto_now_add=True)
 	

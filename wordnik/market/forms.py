@@ -130,3 +130,5 @@ class ReportAddForm(forms.Form):
 	description = forms.CharField(widget=forms.Textarea)
 	file = forms.FileField()
 	stream = forms.ModelChoiceField(queryset=REPORT_STREAMS)
+	version = forms.CharField()
+	author = forms.ModelChoiceField(queryset=USERS)
