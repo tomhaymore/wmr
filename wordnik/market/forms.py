@@ -118,14 +118,14 @@ class CompanyCommentForm(forms.Form):
 	company = forms.ModelChoiceField(queryset=COMPANIES,widget=HiddenInput)
 	body = forms.CharField(widget=forms.Textarea)
 
-class ReportStreamForm(forms.Form):
+class ReportStreamAddForm(forms.Form):
 	name = models.CharField()
 	description = models.CharField(widget=forms.Textarea)
 	tags = models.CharField()
 	companies = forms.ModelMultipleChoiceField(queryset=COMPANIES,required=False)
 	segments = forms.ModelMultipleChoiceField(queryset=SEGMENTS,required=False)
 	
-class ReportForm(forms.Form):
+class ReportAddForm(forms.Form):
 	title = forms.CharField()
 	description = forms.CharField(widget=forms.Textarea)
 	file = forms.FileField()

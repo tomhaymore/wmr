@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from market.models import Company, Comment, Segment, Source, Tag, Metric, MetricType, Report
-from market.forms import SourceForm, MetricForm, CompanyForm, CompanyEditForm, CompanyCommentForm, SegmentForm
+from market.forms import SourceForm, MetricForm, CompanyForm, CompanyEditForm, CompanyCommentForm, SegmentForm, ReportStreamAddForm, ReportAddForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -576,7 +576,7 @@ def reportStreamAdd(request):
 			
 			return HttpResponseRedirect('/reportstream/'+str(stream.id))
 	else:
-		form = ReportAddForm() # load unbound form
+		form = ReportStreamAddForm() # load unbound form
 	
 	return render_to_response('market/report/add.html', {
 		'form':form

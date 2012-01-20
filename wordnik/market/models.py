@@ -205,7 +205,7 @@ class BusinessModelDetails(models.Model):
 	details = models.TextField()
 	
 class ReportStream(models.Model):
-	title = models.CharField(max_length=450)
+	name = models.CharField(max_length=450)
 	description = models.TextField()
 	tags = models.ManyToManyField(Tag,blank=True)
 	companies = models.ManyToManyField(Company,blank=True)
