@@ -40,6 +40,11 @@ def login(request):
     return render_to_response('market/login.html', {'errors':msg},context_instance=RequestContext(request))
 
 @login_required
+def logout(request):
+    logout(request)
+    return HttpResponseRedirect("/")
+
+@login_required
 def addCompany(request):
 	if request.method == 'POST': # if the form has been submitted
 		form = CompanyForm(request.POST,request.FILES) # a form is bound to the Post data
