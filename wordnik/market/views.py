@@ -502,7 +502,7 @@ def reportDetail(request, report_id):
 	
 def reportAll(request):
 	# get all tags
-	rep_list = Report.object.all()
+	rep_list = Report.objects.all()
 
 	paginator = Paginator(rep_list, 25)
 	page = request.GET.get('page')
