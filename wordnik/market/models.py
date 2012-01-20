@@ -204,12 +204,19 @@ class BusinessModelDetails(models.Model):
 	company = models.ForeignKey(Company)
 	details = models.TextField()
 	
+class ReportStream(models.Model):
+	title = models.CharField(max_length=450)
+	description = models.TextField()
+	tags = models.ManyToManyField(Tag,blank=True)
+	companies = models.ManyToManyField(Company,blank=True)
+	segments = models.ManyToManyField(Segment,blank=True)
+	created = models.DateTimeField(auto_now_add=True)
+	modified = models.DateTimeField(auto_now=True)
+
 class Report(models.Model):
 	title = models.CharField(max_length=250)
 	description = models.TextField()
 	file = models.FileField(upload_to='reports',blank=True)
-	tags = models.ManyToManyField(Tag,blank=True)
-	companies = models.ManyToManyField(Company,blank=True)
-	segments = models.ManyToManyField(Segment,blank=True)
+	stream = models.ForeignKey(ReportStream)
 	created = models.DateTimeField(auto_now_add=True)
 	
