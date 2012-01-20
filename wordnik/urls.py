@@ -26,6 +26,8 @@ urlpatterns = patterns('',
     url(r'^segment/(?P<seg_id>\d+)/$', 'market.views.segmentDetail'),
     url(r'^segment/add','market.views.addSegment'),
     url(r'^segment/edit/(?P<seg_id>\d+)/$', 'market.views.editSegment'),
+    url(r'^tag/(?P(<tag_id>)\d+)/$', 'market.views.tagDetail'),
+    url(r'^tag/all', 'market.views.tagAll'),
     url(r'^login','market.views.login'),
     # url(r'^wordnik/', include('wordnik.foo.urls')),
 

@@ -203,3 +203,13 @@ class BusinessModelDetails(models.Model):
 	model = models.ForeignKey(BusinessModel)
 	company = models.ForeignKey(Company)
 	details = models.TextField()
+	
+class Report(models.Model):
+	title = models.CharField(max_length=250)
+	description = models.TextField()
+	file = models.FileField(upload_to='reports',blank=True)
+	tags = models.ManyToManyField(Tag,blank=True)
+	companies = models.ManyToManyField(Company,blank=True)
+	segments = models.ManyToManyField(Segment,blank=True)
+	created = models.DateTimeField(auto_now_add=True)
+	

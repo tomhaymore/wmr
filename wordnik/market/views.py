@@ -449,41 +449,76 @@ def addSegment(request):
 		context_instance=RequestContext(request)
 	)
 
-# api views
+# views for tags
 
-def getMetrics(request, co_id):
-	co = get_object_or_404(Company,pk=co_id)
+def tagDetail(request, tag_id):
+	# fetch tag or error
+	tag = get_object_or_404(Tag,pk=tag_id)
 	
-	# initialize date arrays
-	years = [2009, 2010, 2011, 2012]
-	monthsDict = {1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec'}
+	# get other entities associated with tag
+	cos = Company.objects.all().filter(tag=tag)
+	sources = Source.objects.all().filter(tag=tag)
+	reports = Report.objects.all().filter(tag=tag)
 	
-	# initialize arrays for co's dates / stats
-	dates = []
-	stats = []
-
-	oldStat = 0
-	today = datetime.date.today()
-	for y in years:
-		if y >= metrics[0].date.year:
-			for i in range(1,13):
-				if y == today.year and i > today.month:
-					break
-				elif i == 1:
-					dates.append(monthsDict[i]+" "+str(y))
-				else:
-					dates.append(monthsDict[i])
-				for m in metrics:
-					if m.date.year == y and m.date.month == i:
-						stats.append(m.stat)
-						oldStat = m.stat
-						stat = False
-				if not stat:
-					stats.append(oldStat)
-	
-	return render_to_response('market/api/metrics.html', {
-		'dates':dates,'stats' : stats
+	# render page
+	return render_to_response('market/tag/detail.html', {
+		'tag':tag,'cos':cos,'sources':sources,'reports':reports
 		},
 		context_instance=RequestContext(request)
 	)
+	
+def tagAll(request):
+	# get all tags
+	tag_list = Tag.object.all()
+
+	paginator = Paginator(tag_list, 25)
+	page = request.GET.get('page')
+	try:
+		tags = paginator.page(page)
+	except TypeError:
+		tags = paginator.page(1)
+	except PageNotAnInteger:
+		tags = paginator.page(1)
+	except EmptyPage:
+		tags = paginator.page(paginator.num_pages)
+	
+	return render_to_response('market/tag/all.html', {
+		'tags':tags
+		},
+		context_instance=RequestContext(request)
+	)
+ 
+# report views
+
+def reportDetail(request, report_id):
+	# get report or 404
+	report = get_object_or_404(Report, pk=report_id)
+	
+	return render_to_response('market/report/detail.html', {
+		'report':report
+		},
+		context_instance=RequestContext(request)
+	)
+	
+def reportAll(request):
+	# get all tags
+	rep_list = Report.object.all()
+
+	paginator = Paginator(rep_list, 25)
+	page = request.GET.get('page')
+	try:
+		reps = paginator.page(page)
+	except TypeError:
+		reps = paginator.page(1)
+	except PageNotAnInteger:
+		reps = paginator.page(1)
+	except EmptyPage:
+		reps = paginator.page(paginator.num_pages)
+	
+	return render_to_response('market/report/all.html', {
+		'reps':reps
+		},
+		context_instance=RequestContext(request)
+	)
+	
 	

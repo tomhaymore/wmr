@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+
+
+
+{% endblock %}
+
+{% block pagetitle %}
+All Tags
+{% endblock %}
+
+{% block content %}
+{% if tags %}
+	<ul class="slickList">
+		{% for t in tags.object_list %}
+			<li><a href="/tag/{{ t.id }}/">{{ t.name }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>No tags in the database.</p>
+{% endif %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if tags.has_previous %}
+            <a href="?page={{ tags.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ tags.number }} of {{ tags.paginator.num_pages }}.
+        </span>
+
+        {% if tags.has_next %}
+            <a href="?page={{ tags.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}
+	

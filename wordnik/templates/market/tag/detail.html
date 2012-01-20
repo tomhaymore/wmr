@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block extrascripts %}
+
+    
+{% endblock %}
+
+{% block sidebar %}
+	
+
+{% endblock %}
+
+{% block pagetitle %}
+	<div class="pageTitleBarDiv" id="coName">{{tag.name}}</div>
+	
+{% endblock %}
+
+{% block content %}
+	{% if cos %}
+		<p class="pageSubHead">Companies</p>
+		<ul class="slickList">
+			{% for c in cos %}
+				<li class="slickListItem"><a href="/company/{{ c.id }}">c.name</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	{% if sources %}
+		<p class="pageSubHead">Sources</p>
+		<ul class="slickList">
+			{% for s in sources %}
+				<li class="slickListItem"><a href="/source/{{ s.id }}">s.title</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	{% if reports %}
+		<p class="pageSubHead">Reports</p>
+		<ul class="slickList">
+			{% for r in reports %}
+				<li class="slickListItem"><a href="/report/{{ r.id }}">r.title</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+{% endblock %}

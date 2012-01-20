@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+
+
+
+{% endblock %}
+
+{% block pagetitle %}
+All Reports
+{% endblock %}
+
+{% block content %}
+{% if reps %}
+	<ul class="slickList">
+		{% for r in reps.object_list %}
+			<li><a href="/rep/{{ r.id }}/">{{ r.name }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>No reports in the database.</p>
+{% endif %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if reps.has_previous %}
+            <a href="?page={{ reps.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ reps.number }} of {{ reps.paginator.num_pages }}.
+        </span>
+
+        {% if reps.has_next %}
+            <a href="?page={{ reps.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}
+	
