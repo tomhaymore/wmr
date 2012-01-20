@@ -55,7 +55,7 @@ class Comment(models.Model):
 	
 # exit events for companies
 class Exit(models.Model):
-	type = models.CharField(max_length=200,choices=EXIT_CHOICES)
+	type = models.CharField(max_length=450,choices=EXIT_CHOICES)
 	amount = models.DecimalField(max_digits=24, decimal_places=2,blank=True,null=True)
 	company = models.ForeignKey("Company",blank=True,null=True,related_name="company")
 	acquirer = models.ForeignKey("Company",blank=True,null=True,related_name="acquirer")
@@ -64,7 +64,7 @@ class Exit(models.Model):
 
 # tags, used on pretty much all types of entities
 class Tag(models.Model):
-	name = models.CharField(max_length=200)
+	name = models.CharField(max_length=450)
 	description = models.TextField(null=True)
 	created = models.DateTimeField(auto_now_add=True)
 	modified = models.DateTimeField(auto_now=True)
@@ -147,12 +147,12 @@ class ProductFeature(models.Model):
 		return self.spec_name
 
 class Source(models.Model):
-	author = models.CharField(max_length=200,blank=True,null=True)
-	source = models.CharField(max_length=200,blank=True,null=True)
+	author = models.CharField(max_length=450,blank=True,null=True)
+	source = models.CharField(max_length=450,blank=True,null=True)
 	url = models.URLField(blank=True,null=True)
 	file = models.FileField(upload_to='sources',blank=True,null=True)
 	title = models.CharField(max_length=450)
-	date = models.DateField()
+	date = models.DateField(blank=True,null=True)
 	tags = models.ManyToManyField(Tag,blank=True,null=True)
 	#comments = models.ManyToManyField(Comment,blank=True,null=True)
 	insight = models.TextField(blank=True,null=True)
@@ -166,7 +166,7 @@ class Source(models.Model):
 			return self.title
 	
 class Ecosystem(models.Model):
-	name = models.CharField(max_length=200)
+	name = models.CharField(max_length=450)
 	description = models.TextField(blank=True,null=True)
 	modified = models.DateTimeField(auto_now=True)
 
