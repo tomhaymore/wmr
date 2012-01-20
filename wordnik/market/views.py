@@ -264,8 +264,8 @@ def search(request):
 	
 	if request.GET:
 		search_term = request.GET['term']
-		company_results = Company.objects.filter(name__contains=search_term)
-		source_results = Source.objects.filter(title__contains=search_term)
+		company_results = Company.objects.filter(name__icontains=search_term)
+		source_results = Source.objects.filter(title__icontains=search_term)
 		segment_list = Segment.objects.all().order_by('name')
 		recent_news = Source.objects.all().order_by('-modified')[:5]
 		return render_to_response('market/search.html',{'recent_news':recent_news,'source_results':source_results,'company_results':company_results,'segment_list':segment_list},context_instance=RequestContext(request))
