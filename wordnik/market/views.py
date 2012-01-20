@@ -578,11 +578,23 @@ def reportStreamAdd(request):
 	else:
 		form = ReportStreamAddForm() # load unbound form
 	
-	return render_to_response('market/report/add.html', {
+	return render_to_response('market/reportstream/add.html', {
 		'form':form
 		},
 		context_instance=RequestContext(request)
 	)
+	
+def reportStreamDetail(request, stream_id):
+	# get stream or 404
+	
+	stream = get_object_or_404(ReporStream, pk=stream_id)
+	
+	return render_to_response('market/report/streamDetail.html', {
+			'stream':stream
+		},
+		context_instance=RequestContext(request)
+	)
+	
 # admin functions	
 	
 
