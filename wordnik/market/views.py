@@ -521,6 +521,68 @@ def reportAll(request):
 		context_instance=RequestContext(request)
 	)
 	
+def reportAdd(request):
+	# check to see if form submitted
+	if request.POST:
+		form = ReportAddForm(request.POST)
+		
+		# validate form
+		if form.is_valid():
+		
+			if request.FILES:
+				handleUploadedFile(request.FILES['file'])
+				
+			title = form.cleaned_data['title']
+			description = form.cleaned_data['description']
+			stream = form.cleaned_data['stream']
+			file = form.cleaned_data['file']
+			rep = Report(title=title,description=description,stream=stream,file=file)
+			rep.save()
+			return HttpResponseRedirect('/reportstream/'+str(rep.stream.id))
+	else:
+		form = ReportAddForm() # load unbound form
+	
+	return render_to_response('market/report/add.html', {
+		'form':form
+		},
+		context_instance=RequestContext(request)
+	)
+
+def reportStreamAdd(request):
+	# check to see if form submitted
+	if request.POST:
+		form = ReportStreamAddForm(request.POST)
+		
+		# validate form
+		if form.is_valid():
+				
+			name = form.cleaned_data['name']
+			description = form.cleaned_data['description']
+			tags = form.cleaned_data['tags']
+			cos = form.cleaned_data['companies']
+			segs = form.cleaned_data['segments']
+			
+			stream = ReportStream(name=name,description=description)
+			stream.save()
+			
+			for t in tags:
+				stream.tags.add(t)
+			for c in cos:
+				stream.companies.add(c)
+			for s in segs:
+				stream.segments.add(s)
+			
+			stream.save()
+			
+			return HttpResponseRedirect('/reportstream/'+str(stream.id))
+	else:
+		form = ReportAddForm() # load unbound form
+	
+	return render_to_response('market/report/add.html', {
+		'form':form
+		},
+		context_instance=RequestContext(request)
+	)
 # admin functions	
 	
 
