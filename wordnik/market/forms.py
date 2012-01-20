@@ -74,6 +74,7 @@ class CompanyEditForm(forms.Form):
 	id = forms.IntegerField(widget=HiddenInput)
 	name = forms.CharField(max_length=250)
 	description = forms.CharField(widget=forms.Textarea)
+	public = forms.ChoiceField(choices=PUBLIC_CHOICES)
 	#slogan = forms.CharField(required=False)
 	logo = forms.FileField(required=False)
 	url = forms.URLField()
