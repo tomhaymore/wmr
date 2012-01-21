@@ -167,17 +167,18 @@ def editCompany(request,co_id):
 
 @login_required
 def allCompanies(request):
-	co_list = Company.objects.all()
-	paginator = Paginator(co_list, 20)
-	page = request.GET.get('page')
-	try:
-		cos = paginator.page(page)
-	except TypeError:
-		cos = paginator.page(1)
-	except PageNotAnInteger:
-		cos = paginator.page(1)
-	except EmptyPage:
-		cos = paginator.page(paginator.num_pages)
+	cos = Company.objects.all().order_by('name')
+	#co_list = Company.objects.all()
+	#paginator = Paginator(co_list, 20)
+	#page = request.GET.get('page')
+	#try:
+	#	cos = paginator.page(page)
+	#except TypeError:
+	#	cos = paginator.page(1)
+	#except PageNotAnInteger:
+	#	cos = paginator.page(1)
+	#except EmptyPage:
+	#	cos = paginator.page(paginator.num_pages)
 	segment_list = Segment.objects.all().order_by('name')
 	recent_news = Source.objects.all().order_by('-modified')[:5]
 	return render_to_response('market/company/all.html',{'recent_news':recent_news,'segment_list':segment_list,'cos':cos},context_instance=RequestContext(request))
