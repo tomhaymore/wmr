@@ -1,7 +1,7 @@
 from django import forms
 from django.forms.widgets import HiddenInput
 from django.contrib.auth.models import User
-from market.models import Company, MetricType, Source, Segment, Ecosystem, ReportStream
+from market.models import Company, MetricType, Source, Segment, Ecosystem, AnalysisStream
 
 SOURCE_TYPE_CHOICES = [
 	('general','general'),
@@ -56,7 +56,7 @@ SEGMENTS = Segment.objects.all().order_by('name')
 
 ECO = Ecosystem.objects.all().order_by('name')
 
-REPORT_STREAMS = ReportStream.objects.all().order_by('-created')
+ANALYSIS_STREAMS = AnalysisStream.objects.all().order_by('-created')
 
 class CompanyForm(forms.Form):
 	name = forms.CharField(max_length=250)
@@ -118,17 +118,17 @@ class CompanyCommentForm(forms.Form):
 	company = forms.ModelChoiceField(queryset=COMPANIES,widget=HiddenInput)
 	body = forms.CharField(widget=forms.Textarea)
 
-class ReportStreamAddForm(forms.Form):
+class AnalysisStreamAddForm(forms.Form):
 	name = forms.CharField()
 	description = forms.CharField(widget=forms.Textarea)
 	tags = forms.CharField()
 	companies = forms.ModelMultipleChoiceField(queryset=COMPANIES,required=False)
 	segments = forms.ModelMultipleChoiceField(queryset=SEGMENTS,required=False)
 	
-class ReportAddForm(forms.Form):
+class AnalysisAddForm(forms.Form):
 	title = forms.CharField()
 	description = forms.CharField(widget=forms.Textarea)
 	file = forms.FileField()
-	stream = forms.ModelChoiceField(queryset=REPORT_STREAMS)
+	stream = forms.ModelChoiceField(queryset=ANALYSIS_STREAMS)
 	version = forms.CharField()
 	author = forms.ModelChoiceField(queryset=USERS)

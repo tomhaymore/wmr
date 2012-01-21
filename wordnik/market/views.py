@@ -9,8 +9,8 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from market.models import Company, Comment, Segment, Source, Tag, Metric, MetricType, Report, ReportStream
-from market.forms import SourceForm, MetricForm, CompanyForm, CompanyEditForm, CompanyCommentForm, SegmentForm, ReportStreamAddForm, ReportAddForm
+from market.models import Company, Comment, Segment, Source, Tag, Metric, MetricType, Analysis, AnalysisStream
+from market.forms import SourceForm, MetricForm, CompanyForm, CompanyEditForm, CompanyCommentForm, SegmentForm, AnalysisStreamAddForm, AnalysisAddForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -509,7 +509,7 @@ def tagAll(request):
 # report views
 
 @login_required
-def reportDetail(request, report_id):
+def analysisDetail(request, report_id):
 	# get report or 404
 	report = get_object_or_404(Report, pk=report_id)
 	
@@ -520,7 +520,7 @@ def reportDetail(request, report_id):
 	)
 
 @login_required
-def reportAll(request):
+def analysisAdd(request):
 	# get all tags
 	rep_list = Report.objects.all()
 
@@ -542,7 +542,7 @@ def reportAll(request):
 	)
 
 @login_required
-def reportAdd(request):
+def analysisAdd(request):
 	# check to see if form submitted
 	if request.POST:
 		form = ReportAddForm(request.POST)
@@ -570,7 +570,7 @@ def reportAdd(request):
 	)
 
 @login_required
-def reportStreamAdd(request):
+def analysisStreamAdd(request):
 	# check to see if form submitted
 	if request.POST:
 		form = ReportStreamAddForm(request.POST)
@@ -607,7 +607,7 @@ def reportStreamAdd(request):
 	)
 
 @login_required
-def reportStreamDetail(request, stream_id):
+def analysisStreamDetail(request, stream_id):
 	# get stream or 404
 	
 	stream = get_object_or_404(ReporStream, pk=stream_id)

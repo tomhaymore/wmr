@@ -1,4 +1,4 @@
-from market.models import Comment, Exit, Tag, Segment, Company, Product, Feature, ProductFeature, Source, Ecosystem, Metric, ReportStream, Report
+from market.models import Comment, Exit, Tag, Segment, Company, Product, Feature, ProductFeature, Source, Ecosystem, Metric, AnalysisStream, Analysis
 from django.contrib import admin
 
 class CommentAdmin(admin.ModelAdmin):
@@ -15,7 +15,7 @@ admin.site.register(Feature)
 admin.site.register(Source)
 admin.site.register(Ecosystem)
 admin.site.register(Metric)
-admin.site.register(ReportStream)
-admin.site.register(Report)
+admin.site.register(AnalysisStream)
+admin.site.register(Analysis)
 
 

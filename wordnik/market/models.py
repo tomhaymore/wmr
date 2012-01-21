@@ -204,7 +204,7 @@ class BusinessModelDetails(models.Model):
 	company = models.ForeignKey(Company)
 	details = models.TextField()
 	
-class ReportStream(models.Model):
+class AnalysisStream(models.Model):
 	name = models.CharField(max_length=450)
 	description = models.TextField()
 	tags = models.ManyToManyField(Tag,blank=True)
@@ -213,11 +213,11 @@ class ReportStream(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	modified = models.DateTimeField(auto_now=True)
 
-class Report(models.Model):
+class Analysis(models.Model):
 	title = models.CharField(max_length=250)
 	description = models.TextField()
 	file = models.FileField(upload_to='reports',blank=True)
-	stream = models.ForeignKey(ReportStream)
+	stream = models.ForeignKey(AnalysisStream)
 	version = models.CharField(max_length=15)
 	author = models.ForeignKey(User)
 	created = models.DateTimeField(auto_now_add=True)
