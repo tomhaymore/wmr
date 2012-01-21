@@ -6,13 +6,12 @@
 {% endblock %}
 
 {% block pagetitle %}
-	{{s.title}} 
+	{{s.title}} <span class="note">(<a href="{{ s.url }}">view original</a>)</span>
 {% endblock %}
 
 {% block content %}
-	<p class="pageSubhead">(<a href="{{ s.url }}">view original</a>)</p>
 	{% if s.author %}
-		<p class="pageSubHead">{{s.author}}, {{s.source}}</p>
+		<p class="note">{{s.author}}, {{s.source}}</p>
 	{% else %}
 		<em>from</em> <p class="pageSubHead">{{s.source}}</p>
 	{% endif %}
@@ -31,7 +30,7 @@
 	{% if s.tags.all %}
 		<ul class="slickListFlat">
 			{% for tag in s.tags.all %}
-				<li class="slickListItem"><a href="/tag/{{ tag.id }}">{{ tag.name }}</a></li>
+				<li class="slickListItem"><a class="tag" href="/tag/{{ tag.id }}">{{ tag.name }}</a></li>
 			{% endfor %}
 		</ul>
 	{% else %}
