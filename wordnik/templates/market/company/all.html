@@ -12,11 +12,34 @@ All Companies
 {% block content %}
 {% if cos %}
 	<ul class="slickList">
-		{% for co in cos.object_list %}
-			<li><a href="/company/{{ co.id }}/">{{ co.name }}</a></li>
+		{% for co in cos %}
+			<li><a class="bigLink" href="/company/{{ co.id }}/">{{ co.name }}</a>
+			
+			{% if co.segments.all %}
+				[
+					{% for seg in co.segments.all %}
+						<a class="alt" href="/segment/{{ seg.id }}">{{ seg.name }}</a>
+					{% endfor %}
+				]
+			{% endif %}
+			
+			{% if co.tags.all %}
+				<div class="smallTagList">
+				{% for tag in co.tags.all %}
+					<a class="alt" href="/tag/{{ tag.id }}">{{ tag.name }}</a>
+				{% endfor %}
+				</div>
+				<div class="spacer"></div>
+			{% endif %}
+			
+			
+			
+			<p class="noTopMargin">{{ co.description|safe }}  </p>
+			</li>
 		{% endfor %}
 	</ul>
-	
+
+<!--
 <div class="pagination">
     <span class="step-links">
         {% if cos.has_previous %}
@@ -32,6 +55,7 @@ All Companies
         {% endif %}
     </span>
 </div>
+-->
 {% else %}
 	<p>No companies in the database.</p>
 {% endif %}
