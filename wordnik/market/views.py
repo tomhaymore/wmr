@@ -474,11 +474,11 @@ def tagDetail(request, tag_id):
 	# get other entities associated with tag
 	cos = Company.objects.filter(tags=tag)
 	sources = Source.objects.filter(tags=tag)
-	reports = Report.objects.filter(tags=tag)
+	streams = ReportStream.objects.filter(tags=tag)
 	
 	# render page
 	return render_to_response('market/tag/detail.html', {
-		'tag':tag,'cos':cos,'sources':sources,'reports':reports
+		'tag':tag,'cos':cos,'sources':sources,'reports':streams
 		},
 		context_instance=RequestContext(request)
 	)
