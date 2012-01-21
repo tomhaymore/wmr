@@ -26,7 +26,7 @@ All Companies
 			{% if co.tags.all %}
 				<div class="smallTagList">
 				{% for tag in co.tags.all %}
-					<a class="alt" href="/tag/{{ tag.id }}">{{ tag.name }}</a>
+					<a class="tag" href="/tag/{{ tag.id }}">{{ tag.name }}</a>
 				{% endfor %}
 				</div>
 				<div class="spacer"></div>
@@ -34,7 +34,7 @@ All Companies
 			
 			
 			
-			<p class="noTopMargin">{{ co.description|safe }}  </p>
+			<p class="noTopMargin">{{ co.description|truncatewords:30 }}  </p>
 			</li>
 		{% endfor %}
 	</ul>
