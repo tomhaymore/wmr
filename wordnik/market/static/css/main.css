@@ -273,6 +273,10 @@ div.chart {
 
 /* Link styles */
 
+a.bigLink {
+	font-size:14px;
+}
+
 a.button {
 	border-radius: 2px;
 	border: 1px solid #666;
@@ -311,6 +315,10 @@ a.adminButton {
 a.adminButton:hover {
 	color: #fff;
 	text-decoration: none;
+}
+
+a.alt {
+	color:#FF4D11;
 }
 
 /*  Form styles */
@@ -379,6 +387,15 @@ div#footer {
 
 div.descriptionPara {
 	font-size:11px;
+}
+
+div.smallTagList {
+	/*display:inline;
+	margin-left:10px;*/
+}
+
+p.noTopMargin {
+	margin-top:5px;
 }
 
 p.pageHead {
