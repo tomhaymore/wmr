@@ -475,7 +475,7 @@ def tagDetail(request, tag_id):
 	# get other entities associated with tag
 	cos = Company.objects.filter(tags=tag)
 	sources = Source.objects.filter(tags=tag)
-	streams = ReportStream.objects.filter(tags=tag)
+	streams = AnalysisStream.objects.filter(tags=tag)
 	
 	# render page
 	return render_to_response('market/tag/detail.html', {
@@ -509,12 +509,12 @@ def tagAll(request):
 # report views
 
 @login_required
-def analysisDetail(request, report_id):
+def analysisDetail(request, analysis_id):
 	# get report or 404
-	report = get_object_or_404(Report, pk=report_id)
+	analysis = get_object_or_404(Analysis, pk=report_id)
 	
-	return render_to_response('market/report/detail.html', {
-		'report':report
+	return render_to_response('market/analysis/detail.html', {
+		'analysis':analysis
 		},
 		context_instance=RequestContext(request)
 	)
@@ -522,7 +522,7 @@ def analysisDetail(request, report_id):
 @login_required
 def analysisAdd(request):
 	# get all tags
-	rep_list = Report.objects.all()
+	rep_list = Analysis.objects.all()
 
 	paginator = Paginator(rep_list, 25)
 	page = request.GET.get('page')
@@ -535,7 +535,7 @@ def analysisAdd(request):
 	except EmptyPage:
 		reps = paginator.page(paginator.num_pages)
 	
-	return render_to_response('market/report/all.html', {
+	return render_to_response('market/analysis/all.html', {
 		'reps':reps
 		},
 		context_instance=RequestContext(request)
@@ -545,7 +545,7 @@ def analysisAdd(request):
 def analysisAdd(request):
 	# check to see if form submitted
 	if request.POST:
-		form = ReportAddForm(request.POST)
+		form = AnalysisAddForm(request.POST)
 		
 		# validate form
 		if form.is_valid():
@@ -557,7 +557,7 @@ def analysisAdd(request):
 			description = form.cleaned_data['description']
 			stream = form.cleaned_data['stream']
 			file = form.cleaned_data['file']
-			rep = Report(title=title,description=description,stream=stream,file=file)
+			rep = Analysis(title=title,description=description,stream=stream,file=file)
 			rep.save()
 			return HttpResponseRedirect('/reportstream/'+str(rep.stream.id))
 	else:
