@@ -100,7 +100,7 @@ class Company(models.Model):
 	state = models.CharField(max_length=45,default="active",choices=STATE_CHOICES)
 	created = models.DateTimeField(auto_now_add=True)
 	modified = models.DateTimeField(auto_now=True)
-	public = models.BooleanField(default=False)
+	public = models.IntegerField(default=0)
 	ticker = models.CharField(max_length=45,blank=True,null=True)
 	
 	class Meta:
