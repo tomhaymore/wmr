@@ -239,7 +239,7 @@
 				<li class="slickListItem">Tags:</li>
 					{% if co.tags.all %}
 						{% for tag in co.tags.all %}
-							<li class="slickListItem"><a href="/tag/{{ tag.id }}">{{ tag.name }}</a></li>
+							<li class="slickListItem"><a class="tag" href="/tag/{{ tag.id }}">{{ tag.name }}</a></li>
 						{% endfor %}
 					{% else %}
 						<li class="slickListItem">None.</li>
