@@ -21,8 +21,8 @@
 {% endblock %}
 
 {% block content %}
-<p class="pageSubHead">Add a New Report</p>
-<form action="/report/add/" method="post" enctype="multipart/form-data">
+<p class="pageSubHead">Add a New Analysis</p>
+<form action="/analysis/add/" method="post" enctype="multipart/form-data">
 {% csrf_token %}
 	{% for field in form %}
         <p class="fieldWrapper">
