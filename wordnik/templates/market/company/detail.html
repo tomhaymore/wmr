@@ -274,7 +274,7 @@ View:
 		{% if sources.all %}
 			{% for s in sources.all %}
 			<p class="slickListItem"><a href="/source/{{ s.id }}">{{ s.title }}</a>, <em>{{ s.source }}</em>
-			{{ s.insight }}
+			{{ s.insight|safe }}
 			</p>
 			{% endfor %}
 		{% else %}
@@ -312,7 +312,7 @@ View:
 		{% if sources.all %}
 			{% for s in sources.all %}
 			<p class="slickListItem"><a href="/source/{{ s.id }}">{{ s.title }}</a>, <em>{{ s.source }}</em>
-			{{ s.insight }}
+			{{ s.insight|safe }}
 			</p>
 			{% endfor %}
 		{% else %}
