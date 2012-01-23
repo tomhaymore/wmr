@@ -17,9 +17,11 @@
 {% block content %}
 	{{ stream.description|safe }}
 	
+	<ul class="slickList">
 	{% for a in stream.analysis_set.all %}
-		{{ a.title }}
+		<li class="slickListItem">V.{{a.version}} <a href="a.file">{{ a.title }}</a></li>
 	{% endfor %}
+	</ul>
 	
 	{% if stream.segments %}
 		<p class="pageSubHead">Market Segments</p>
