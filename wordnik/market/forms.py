@@ -121,14 +121,17 @@ class CompanyCommentForm(forms.Form):
 class AnalysisStreamAddForm(forms.Form):
 	name = forms.CharField()
 	description = forms.CharField(widget=forms.Textarea)
+	file = forms.FileField()
+	version = forms.CharField()
+	author = forms.ModelChoiceField(queryset=USERS)
 	tags = forms.CharField()
 	companies = forms.ModelMultipleChoiceField(queryset=COMPANIES,required=False)
 	segments = forms.ModelMultipleChoiceField(queryset=SEGMENTS,required=False)
 	
 class AnalysisAddForm(forms.Form):
+	stream = forms.ModelChoiceField(queryset=ANALYSIS_STREAMS)
 	title = forms.CharField()
 	description = forms.CharField(widget=forms.Textarea)
 	file = forms.FileField()
-	stream = forms.ModelChoiceField(queryset=ANALYSIS_STREAMS)
 	version = forms.CharField()
 	author = forms.ModelChoiceField(queryset=USERS)
