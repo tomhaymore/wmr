@@ -270,6 +270,16 @@ View:
 		{% else %}
 			<p>No description</p>
 		{% endif %}
+		<p class="pageSubHead">Sources</p>
+		{% if sources.all %}
+			{% for s in sources.all %}
+			<p class="slickListItem"><a href="/source/{{ s.id }}">{{ s.title }}</a>, <em>{{ s.source }}</em>
+			{{ s.insight }}
+			</p>
+			{% endfor %}
+		{% else %}
+			<p>There are no sources for this company.  How unprofessional.</p>
+		{% endif %}
 </div>
 
 <div id="compmet" class="compInfoDiv">
@@ -300,11 +310,11 @@ View:
 <div id="compsrc" class="compInfoDiv">
 	<p class="pageSubHead">Sources</p>
 		{% if sources.all %}
-			<ul class="slickList">
 			{% for s in sources.all %}
-				<li class="slickListItem"><a href="/source/{{ s.id }}">{{ s.title }}</a>, <em>{{ s.source }}</em></li>
+			<p class="slickListItem"><a href="/source/{{ s.id }}">{{ s.title }}</a>, <em>{{ s.source }}</em>
+			{{ s.insight }}
+			</p>
 			{% endfor %}
-			</ul>
 		{% else %}
 			<p>There are no sources for this company.  How unprofessional.</p>
 		{% endif %}

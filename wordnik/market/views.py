@@ -601,7 +601,7 @@ def analysisStreamAdd(request):
 			
 			stream.save()
 			
-			analysis = Analysis(title=name,description=description,stream=stream,file=file,author=author)
+			analysis = Analysis(title=name,description=description,stream=stream,file=file,author=author,version=0)
 			
 			analysis.save()
 			
