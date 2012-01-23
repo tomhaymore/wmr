@@ -521,21 +521,10 @@ def analysisDetail(request, analysis_id):
 	)
 
 @login_required
-def analysisAdd(request):
+def analysisAll(request):
 	# get all tags
-	rep_list = Analysis.objects.all()
+	reps = Analysis.objects.all()
 
-	paginator = Paginator(rep_list, 25)
-	page = request.GET.get('page')
-	try:
-		reps = paginator.page(page)
-	except TypeError:
-		reps = paginator.page(1)
-	except PageNotAnInteger:
-		reps = paginator.page(1)
-	except EmptyPage:
-		reps = paginator.page(paginator.num_pages)
-	
 	return render_to_response('market/analysis/all.html', {
 		'reps':reps
 		},
@@ -558,13 +547,15 @@ def analysisAdd(request):
 			description = form.cleaned_data['description']
 			stream = form.cleaned_data['stream']
 			file = form.cleaned_data['file']
-			rep = Analysis(title=title,description=description,stream=stream,file=file)
+			author = form.cleaned_data['author']
+			
+			rep = Analysis(title=title,description=description,stream=stream,file=file,author=author)
 			rep.save()
-			return HttpResponseRedirect('/reportstream/'+str(rep.stream.id))
+			return HttpResponseRedirect('/analysis/%i',(rep.stream.id))
 	else:
 		form = ReportAddForm() # load unbound form
 	
-	return render_to_response('market/report/add.html', {
+	return render_to_response('market/analysis/add.html', {
 		'form':form
 		},
 		context_instance=RequestContext(request)
@@ -574,7 +565,7 @@ def analysisAdd(request):
 def analysisStreamAdd(request):
 	# check to see if form submitted
 	if request.POST:
-		form = ReportStreamAddForm(request.POST)
+		form = AnalysisStreamAddForm(request.POST)
 		
 		# validate form
 		if form.is_valid():
@@ -584,12 +575,19 @@ def analysisStreamAdd(request):
 			tags = form.cleaned_data['tags']
 			cos = form.cleaned_data['companies']
 			segs = form.cleaned_data['segments']
+			file = form.cleaned_data['file']
+			author = form.cleaned_data['author']
 			
-			stream = ReportStream(name=name,description=description)
+			stream = AnalysisStream(name=name,description=description)
 			stream.save()
 			
-			for t in tags:
-				stream.tags.add(t)
+			tags = form.cleaned_data['tags']
+			if tags == '':
+				pass
+			else:
+				tags = tags.split(',') # break into separate tags
+				for t in tags:
+					stream.tags.add(t)
 			for c in cos:
 				stream.companies.add(c)
 			for s in segs:
@@ -597,9 +595,11 @@ def analysisStreamAdd(request):
 			
 			stream.save()
 			
-			return HttpResponseRedirect('/reportstream/'+str(stream.id))
+			analysis = Analysis(title=title,description=description,stream=stream,file=file,author=author)
+			
+			return HttpResponseRedirect('/analysis/%i',(stream.id))
 	else:
-		form = ReportStreamAddForm() # load unbound form
+		form = AnalysisStreamAddForm() # load unbound form
 	
 	return render_to_response('market/report/addStream.html', {
 		'form':form
