@@ -9,6 +9,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+LOGIN_URL = 'login'
+
 DATABASES = {
     #'sqlite': {
     #    'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
