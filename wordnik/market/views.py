@@ -68,12 +68,13 @@ def addCompany(request):
 			newCo = Company(name=name,description=description,url=url,logo=logo,platform=platform,state=state)
 			newCo.save()
 			for tag in tags:
-				newTag = None
-				try:
-					newTag = Tag.objects.get(name=tag)
-				except ObjectDoesNotExist:
-					newTag = Tag.objects.create(name=tag)
-				newCo.tags.add(newTag)
+				if tag is not '':
+					newTag = None
+					try:
+						newTag = Tag.objects.get(name=tag)
+					except ObjectDoesNotExist:
+						newTag = Tag.objects.create(name=tag)
+					newCo.tags.add(newTag)
 			for eco in ecosystems:
 				newCo.ecosystem.add(eco)
 			for seg in segments:
