@@ -192,7 +192,7 @@ def index(request):
 	latest_companies_list = Company.objects.all().order_by('-modified')[:5]
 	latest_comments_list = Comment.objects.all().order_by('-modified')[:5]
 	recent_news = Source.objects.all().order_by('-modified')[:5]
-	return render_to_response('market/index.html',{'comments':comments,'recent_news':recent_news,'segment_list':segment_list,'latest_comments_list':latest_comments_list,'latest_companies_list':latest_companies_list},context_instance=RequestContext(request))
+	return render_to_response('market/index.html',{'analysis_list':analysis_list,'comments':comments,'recent_news':recent_news,'segment_list':segment_list,'latest_comments_list':latest_comments_list,'latest_companies_list':latest_companies_list},context_instance=RequestContext(request))
 
 @login_required
 def companyDetail(request, co_id):
