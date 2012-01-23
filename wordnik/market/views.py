@@ -186,6 +186,7 @@ def allCompanies(request):
 
 @login_required
 def index(request):
+	analysis_list = AnalysisStream.objects.all().order_by('-modified')[:5]
 	segment_list = Segment.objects.all().order_by('-modified')[:5]
 	comments = Comment.objects.all().order_by('-modified')[:5]
 	latest_companies_list = Company.objects.all().order_by('-modified')[:5]

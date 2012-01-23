@@ -4,21 +4,22 @@
 {% block content %}
 
 <div class="tileDiv">
-	<p class="pageSubHead">Updated Market Segments</p>
-	{% if segment_list %}
+	<p class="pageSubHead">Recent Analysis</p>
+	{% if analysis_list %}
 		<ul class="slickList">
-			{% for s in segment_list %}
-				<li><a href="/segment/{{ s.id }}/">{{ s.name }}</a></li>
+			{% for a in analysis_list %}
+				<li><a href="/analysis/{{ a.id }}/">{{ a.name }}</a></li>
 			{% endfor %}
 		</ul>
-		<p><a href="/segment/all"><em>See all segments</em></a></p>
+		<p><a href="/analysis/all"><em>See all analyses</em></a></p>
 	{% else %}
-		<p>No market segments in the database.</p>
+		<p>No analyses in the database.</p>
 	{% endif %}
 </div>
 
+
 <div class="tileDiv">
-	<p class="pageSubHead">Recently Added Companies</p>
+	<p class="pageSubHead">Recently Modified Companies</p>
 	{% if latest_companies_list %}
 		<ul class="slickList">
 			{% for co in latest_companies_list %}
@@ -49,6 +50,20 @@
 		<p><a href="/source/all"><em>See all sources</em></a></p>
 	{% else %}
 		<p>No sources in the database.</p>
+	{% endif %}
+</div>
+
+<div class="tileDiv">
+	<p class="pageSubHead">Updated Market Segments</p>
+	{% if segment_list %}
+		<ul class="slickList">
+			{% for s in segment_list %}
+				<li><a href="/segment/{{ s.id }}/">{{ s.name }}</a></li>
+			{% endfor %}
+		</ul>
+		<p><a href="/segment/all"><em>See all segments</em></a></p>
+	{% else %}
+		<p>No market segments in the database.</p>
 	{% endif %}
 </div>
 
