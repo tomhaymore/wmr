@@ -15,7 +15,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def handleUploadedFile(f):
-	destination = open('/Users/thaymore/Sites/wordnik/media/' + f.name, 'wb+')
+	destination = open(f.name, 'wb+')
 	for chunk in f.chunks():
 		destination.write(chunk)
 	destination.close()
@@ -512,10 +512,10 @@ def tagAll(request):
 @login_required
 def analysisDetail(request, analysis_id):
 	# get report or 404
-	analysis = get_object_or_404(Analysis, pk=report_id)
+	stream = get_object_or_404(AnalysisStream, pk=analysis_id)
 	
-	return render_to_response('market/analysis/detail.html', {
-		'analysis':analysis
+	return render_to_response('market/analysis/streamDetail.html', {
+		'stream':stream
 		},
 		context_instance=RequestContext(request)
 	)
@@ -585,12 +585,15 @@ def analysisStreamAdd(request):
 			stream.save()
 			
 			tags = form.cleaned_data['tags']
-			if tags == '':
-				pass
-			else:
+			if tags:
 				tags = tags.split(',') # break into separate tags
 				for t in tags:
-					stream.tags.add(t)
+					newTag = None
+					try:
+						newTag = Tag.objects.get(name=t)
+					except ObjectDoesNotExist:
+						newTag = Tag.objects.create(name=t)
+					stream.tags.add(newTag)
 			for c in cos:
 				stream.companies.add(c)
 			for s in segs:
@@ -598,9 +601,11 @@ def analysisStreamAdd(request):
 			
 			stream.save()
 			
-			analysis = Analysis(title=title,description=description,stream=stream,file=file,author=author)
+			analysis = Analysis(title=name,description=description,stream=stream,file=file,author=author)
 			
-			return HttpResponseRedirect('/analysis/%i',(stream.id))
+			analysis.save()
+			
+			return HttpResponseRedirect('/analysis/'+str(stream.id))
 	else:
 		form = AnalysisStreamAddForm() # load unbound form
 	

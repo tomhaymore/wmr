@@ -15,6 +15,11 @@
 {% endblock %}
 
 {% block content %}
+	{{ stream.description|safe }}
+	
+	{% for a in stream.analysis_set.all %}
+		{{ a.title }}
+	{% endfor %}
 	
 	{% if stream.segments %}
 		<p class="pageSubHead">Market Segments</p>
