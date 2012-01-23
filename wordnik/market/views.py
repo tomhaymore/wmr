@@ -535,7 +535,7 @@ def analysisAll(request):
 def analysisAdd(request):
 	# check to see if form submitted
 	if request.POST:
-		form = AnalysisAddForm(request.POST)
+		form = AnalysisAddForm(request.POST,request.FILES)
 		
 		# validate form
 		if form.is_valid():
@@ -553,7 +553,7 @@ def analysisAdd(request):
 			rep.save()
 			return HttpResponseRedirect('/analysis/%i',(rep.stream.id))
 	else:
-		form = ReportAddForm() # load unbound form
+		form = AnalysisAddForm() # load unbound form
 	
 	return render_to_response('market/analysis/add.html', {
 		'form':form
@@ -565,11 +565,14 @@ def analysisAdd(request):
 def analysisStreamAdd(request):
 	# check to see if form submitted
 	if request.POST:
-		form = AnalysisStreamAddForm(request.POST)
+		form = AnalysisStreamAddForm(request.POST,request.FILES)
 		
 		# validate form
 		if form.is_valid():
-				
+			
+			if request.FILES:
+				handleUploadedFile(request.FILES['file'])
+			
 			name = form.cleaned_data['name']
 			description = form.cleaned_data['description']
 			tags = form.cleaned_data['tags']
@@ -601,7 +604,7 @@ def analysisStreamAdd(request):
 	else:
 		form = AnalysisStreamAddForm() # load unbound form
 	
-	return render_to_response('market/report/addStream.html', {
+	return render_to_response('market/analysis/addStream.html', {
 		'form':form
 		},
 		context_instance=RequestContext(request)

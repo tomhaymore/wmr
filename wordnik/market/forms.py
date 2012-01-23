@@ -122,7 +122,6 @@ class AnalysisStreamAddForm(forms.Form):
 	name = forms.CharField()
 	description = forms.CharField(widget=forms.Textarea)
 	file = forms.FileField()
-	version = forms.CharField()
 	author = forms.ModelChoiceField(queryset=USERS)
 	tags = forms.CharField()
 	companies = forms.ModelMultipleChoiceField(queryset=COMPANIES,required=False)
