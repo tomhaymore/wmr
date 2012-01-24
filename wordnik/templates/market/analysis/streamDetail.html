@@ -19,7 +19,7 @@
 	
 	<ul class="slickList">
 	{% for a in stream.analysis_set.all %}
-		<li class="slickListItem">V.{{a.version}} <a href="a.file">{{ a.title }}</a></li>
+		<li class="slickListItem">V.{{a.version}} <a href="{{a.file}}">{{ a.title }}</a></li>
 	{% endfor %}
 	</ul>
 	
