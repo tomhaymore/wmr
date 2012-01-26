@@ -1,5 +1,5 @@
 from django import forms
-from django.forms.widgets import HiddenInput
+from django.forms.widgets import HiddenInput, Textarea
 from django.contrib.auth.models import User
 from market.models import Company, MetricType, Source, Segment, Ecosystem, AnalysisStream
 
@@ -93,7 +93,7 @@ class SourceForm(forms.Form):
 	date = forms.DateField(required=False)
 	file = forms.FileField(required=False)
 	url = forms.URLField(label="URL")
-	type = forms.ChoiceField(choices=SOURCE_TYPE_CHOICES)
+	#type = forms.ChoiceField(choices=SOURCE_TYPE_CHOICES)
 	companies = forms.ModelMultipleChoiceField(queryset=COMPANIES,required=False)
 	tags = forms.CharField(required=False)
 	insight = forms.CharField(required=False,widget=forms.Textarea)
@@ -128,7 +128,7 @@ class AnalysisStreamAddForm(forms.Form):
 	segments = forms.ModelMultipleChoiceField(queryset=SEGMENTS,required=False)
 	
 class AnalysisAddForm(forms.Form):
-	stream = forms.ModelChoiceField(queryset=ANALYSIS_STREAMS)
+	stream = forms.ModelChoiceField(queryset=ANALYSIS_STREAMS,widget=HiddenInput)
 	title = forms.CharField()
 	description = forms.CharField(widget=forms.Textarea)
 	file = forms.FileField()
