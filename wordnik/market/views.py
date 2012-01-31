@@ -232,7 +232,7 @@ def companyDetail(request, co_id):
 	
 	comments = Comment.objects.all().filter(company=c)
 	metrics = Metric.objects.all().filter(company=c)
-	sources = Source.objects.all().filter(company=c)
+	sources = Source.objects.all().filter(company=c).order_by('-date')
 	recent_news = Source.objects.all().order_by('-modified')[:5]
 	
 	userType = MetricType.objects.get(pk=15)
@@ -511,9 +511,36 @@ def tagAll(request):
 # report views
 
 @login_required
-def analysisDetail(request, analysis_id):
+def analysisDetail(request, stream_id):
+	# check to see if form submitted
+	if request.POST:
+		form = AnalysisAddForm(request.POST,request.FILES)
+		
+		# validate form
+		if form.is_valid():
+		
+			if request.FILES:
+				handleUploadedFile(request.FILES['file'])
+			
+			stream = form.cleaned_data['stream']
+			title = form.cleaned_data['title']
+			description = form.cleaned_data['description']
+			stream = form.cleaned_data['stream']
+			file = form.cleaned_data['file']
+			author = form.cleaned_data['author']
+			
+			analysis = Analysis(title=title,description=description,stream=stream,file=file,author=author)
+			analysis.save()
+			return HttpResponseRedirect('/analysis/' + stream_id))
+	else:
+		# load form with stream set
+		data = {
+			'stream':stream_id
+		}
+		form = AnalysisAddForm(initial=data) # load unbound form
+	
 	# get report or 404
-	stream = get_object_or_404(AnalysisStream, pk=analysis_id)
+	stream = get_object_or_404(AnalysisStream, pk=stream_id)
 	
 	return render_to_response('market/analysis/streamDetail.html', {
 		'stream':stream
